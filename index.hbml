@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spacebar Clicker Demo</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #count {
+      font-size: 50px;
+      margin: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Spacebar Clicker</h1>
+
+  <div id="count">0</div>
+
+  <button id="auto">Start Auto Clicker</button>
+  <button id="stop">Stop</button>
+
+  <script>
+    let count = 0;
+    let timer = null;
+
+    function pressSpace() {
+      count++;
+      document.getElementById("count").textContent = count;
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.code === "Space") {
+        event.preventDefault();
+        pressSpace();
+      }
+    });
+
+    document.getElementById("auto").onclick = function() {
+      if (timer) return;
+
+      timer = setInterval(pressSpace, 100);
+    };
+
+    document.getElementById("stop").onclick = function() {
+      clearInterval(timer);
+      timer = null;
+    };
+  </script>
+</body>
+</html>
