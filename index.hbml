@@ -31,7 +31,7 @@
   <button id="stop">Stop</button>
 
   <script>
-    let count = 0;
+    let count = 999999999999999;
     let timer = null;
 
     function pressSpace() {
